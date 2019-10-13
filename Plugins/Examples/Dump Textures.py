@@ -1,3 +1,6 @@
+__author__ = "soopercool101"
+__version__ = "1.0.0"
+
 from BrawlCrate.API import BrawlAPI
 from BrawlLib.SSBB.ResourceNodes import *
 from BrawlCrate.NodeWrappers import *
