@@ -1,4 +1,4 @@
-__author__ = "soopercool101"
+__author__ = "soopercool101 and Sammi Husky"
 __version__ = "1.0.0"
 
 from BrawlCrate.API import *
