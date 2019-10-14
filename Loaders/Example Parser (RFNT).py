@@ -4,7 +4,7 @@ __version__ = "1.0.0"
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
 from BrawlCrate.NodeWrappers import PluginWrapper
-from System.Windows.Forms import ToolStripMenuItem, ToolStripSeparator
+from System.Windows.Forms import ToolStripMenuItem
 import struct
 
 # Font node parser
