@@ -1,5 +1,5 @@
 __author__ = "soopercool101 and Sammi Husky"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
@@ -8,7 +8,7 @@ from System.Windows.Forms import ToolStripMenuItem
 import struct
 
 # Font node parser
-class RFNTNode(PluginResourceParser):
+class RFNTNode(ARCEntryNode, PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
     def get_ResourceFileType(self):
         return ResourceType.NoEditFolder
