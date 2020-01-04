@@ -1,5 +1,5 @@
 __author__ = "soopercool101 and Sammi Husky"
-__version__ = "1.0.1"
+__version__ = "2.0.0"
 
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
@@ -12,6 +12,9 @@ class RFNTNode(ARCEntryNode, PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
     def get_ResourceFileType(self):
         return ResourceType.NoEditFolder
+
+    def get_Name(self):
+        return "NW4R Font [" + str(self.FileIndex) + "]"
 
     # Called by super class to check if this loader matches the data
     def TryParse(self, stream):
