@@ -10,3 +10,4 @@ Loaders:
 
 Plugins:
 - Dump Textures: Exports every image in a file to a given folder
+- Compress Fighter PACs: Compresses every non-subspace costume to save room when using codes that allow compressed PACs
