@@ -7,31 +7,33 @@ from BrawlCrate.NodeWrappers import PluginWrapper
 from System.Windows.Forms import ToolStripMenuItem
 import struct
 
-# Font node parser
+# Font node parser. All plugin node parsers must be derived from ResourceNode (or a derivative therein) and the PluginResourceParser interface
 class RFNTNode(ARCEntryNode, PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
     def get_ResourceFileType(self):
         return ResourceType.NoEditFolder
 
+    # Gets a formatted name for the object, matching other ArcEntryNodes
     def get_Name(self):
         return "NW4R Font [" + str(self.FileIndex) + "]"
 
     # Called by super class to check if this loader matches the data
     def TryParse(self, stream):
+        # Get the 4-byte tag at the beginning of the node. Many nodetypes in Brawl use this type of identifier
         src = file(stream)
         src.seek(0,0)
         tag = ""
         tag = tag.join(struct.unpack('>4s', src.read(4)))
 
-        #if yes, return an instance of our class.
+        # If the tag matches, return an instance of our class
         if tag == "RFNT": #RFNT
             return RFNTNode()
+        # Otherwise, return null as a fail state
         return None
 
-    # Called for each instance of a new RFNT
+    # Called for each instance of a new node, in order to set it up properly. This is where data beyond the tag should be read and stored
     def OnInitialize(self):
-        if self._name is None:
-            self._name = "NW4R Font"
+        # On initialize returns true if it has children, false if it does not
         return False
 
 # Wrapper for font files
