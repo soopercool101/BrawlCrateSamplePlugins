@@ -21,8 +21,8 @@ if folder:
         # Ignore transforming characters
         if not name == "kirby" or name == "koopa" or name == "gkoopa" or name == "zelda" or name == "sheik" or name == "wario" or name == "warioman" or name == "poketrainer":
             for file in subfolder.GetFiles():
-                # Get ##, Dark, Fake, Spy, and Alt costumes that aren't Etc/Final/Results/Entry files
-                if re.search(r"(?<![Ee][Tt][Cc])(?<![Ff][Ii][Nn][Aa][Ll])(?<![Rr][Ee][Ss][Uu][Ll][Tt])(?<![Ee][Nn][Tt][Rr][Yy])(\d\d|[Ss][Pp][Yy]|[Dd][Aa][Rr][Kk]|[Ff][Aa][Kk][Ee]|[Aa][Ll][Tt]\w).[Pp][Aa][Cc]$", file.Name) is not None:
+                # Get ##, Spy, and Alt costumes that aren't Etc/Final/Results/Entry files
+                if re.search(r"(?<![Ee][Tt][Cc])(?<![Ff][Ii][Nn][Aa][Ll])(?<![Rr][Ee][Ss][Uu][Ll][Tt])(?<![Ee][Nn][Tt][Rr][Yy])(\d\d|[Ss][Pp][Yy]|[Aa][Ll][Tt]\w).[Pp][Aa][Cc]$", file.Name) is not None:
                     if not file.Name.lower().EndsWith("00.pac"):
                         # Open the file
                         BrawlAPI.OpenFile(file.FullName)
