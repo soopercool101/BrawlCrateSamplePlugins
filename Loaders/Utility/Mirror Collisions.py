@@ -31,7 +31,7 @@ def coll_flip_x(sender, event_args):
                     plane._type = CollisionPlaneType.RightWall
     MainForm.Instance.resourceTree_SelectionChanged(None, None)
 
-# Mirror along the x axis
+# Mirror along the y axis
 def coll_flip_y(sender, event_args):
     for cObj in BrawlAPI.SelectedNode.Children:
         if cObj.LinkedBone is None:
@@ -48,7 +48,7 @@ def coll_flip_y(sender, event_args):
                     plane._type = CollisionPlaneType.Floor
     MainForm.Instance.resourceTree_SelectionChanged(None, None)
 
-# Add a button to our right click menu. In this case, adds a button to the right click menu for any ARC named "char_bust_tex_lz77"
+# Add a button to our right click menu. In this case, adds buttons to the right click menu for any Collision Wrapper
 #
 # Arguments are (in order) as follows:
 # Wrapper: Denotes which wrapper the context menu items will be added to
@@ -56,5 +56,5 @@ def coll_flip_y(sender, event_args):
 # Description: Creates a mouseover description for the item
 # Conditional: When the wrapper's context menu is opened, this function is called. Allows enabling/disabling of plugin members based on specific conditions
 # Items: One or more toolstripmenuitems that will be added
-BrawlAPI.AddContextMenuItem(CollisionWrapper, '', 'Flips Collision along the X-Axis', EnableCheck, ToolStripMenuItem('Mirror Unbound Collisions (X-Axis)', None, coll_flip_x))
-BrawlAPI.AddContextMenuItem(CollisionWrapper, '', 'Flips Collision along the Y-Axis', EnableCheck, ToolStripMenuItem('Mirror Unbound Collisions (Y-Axis)', None, coll_flip_y))
+BrawlAPI.AddContextMenuItem(CollisionWrapper, 'Mirror', 'Flips Collision along the X-Axis', EnableCheck, ToolStripMenuItem('Mirror Unbound Collisions (X-Axis)', None, coll_flip_x))
+BrawlAPI.AddContextMenuItem(CollisionWrapper, 'Mirror', 'Flips Collision along the Y-Axis', EnableCheck, ToolStripMenuItem('Mirror Unbound Collisions (Y-Axis)', None, coll_flip_y))
