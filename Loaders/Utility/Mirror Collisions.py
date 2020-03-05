@@ -41,9 +41,9 @@ def coll_flip_y(sender, event_args):
                 plane.SwapLinks()
                 if plane._type == CollisionPlaneType.Floor:
                     plane._type = CollisionPlaneType.Ceiling
-                    plane.IsFallThrough = false
-                    plane.IsRightLedge = false
-                    plane.IsLeftLedge = false
+                    plane.IsFallThrough = False
+                    plane.IsRightLedge = False
+                    plane.IsLeftLedge = False
                 elif plane._type == CollisionPlaneType.Ceiling:
                     plane._type = CollisionPlaneType.Floor
     MainForm.Instance.resourceTree_SelectionChanged(None, None)
