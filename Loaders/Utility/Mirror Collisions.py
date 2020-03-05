@@ -1,5 +1,5 @@
 __author__ = "soopercool101"
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 from BrawlCrate.API import *
 from BrawlCrate.NodeWrappers import CollisionWrapper
@@ -29,6 +29,7 @@ def coll_flip_x(sender, event_args):
                     plane._type = CollisionPlaneType.LeftWall
                 elif plane._type == CollisionPlaneType.LeftWall:
                     plane._type = CollisionPlaneType.RightWall
+    BrawlAPI.SelectedNode.SignalPropertyChange()
     MainForm.Instance.resourceTree_SelectionChanged(None, None)
 
 # Mirror along the y axis
@@ -46,6 +47,7 @@ def coll_flip_y(sender, event_args):
                     plane.IsLeftLedge = False
                 elif plane._type == CollisionPlaneType.Ceiling:
                     plane._type = CollisionPlaneType.Floor
+    BrawlAPI.SelectedNode.SignalPropertyChange()
     MainForm.Instance.resourceTree_SelectionChanged(None, None)
 
 # Add a button to our right click menu. In this case, adds buttons to the right click menu for any Collision Wrapper
