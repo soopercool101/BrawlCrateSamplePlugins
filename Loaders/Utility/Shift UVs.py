@@ -30,6 +30,7 @@ def shiftUV(scaleX, scaleY, transX, transY):
         vec2.Y = vec2.Y + transY
         BrawlAPI.SelectedNode.Points[i] = vec2
         i += 1
+    BrawlAPI.SelectedNode.Points = BrawlAPI.SelectedNode.Points
     BrawlAPI.SelectedNode.SignalPropertyChange()
 
 # Create an instance of our wrapper class and add it to the API wrapper cache
