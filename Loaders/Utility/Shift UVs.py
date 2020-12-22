@@ -15,22 +15,27 @@ class UVWrapper(PluginWrapper):
         return UVWrapper()
 
 def shiftUV_handler(sender, event_args):
-    scaleX = BrawlAPI.UserFloatInput("X-Scale", "X Scale multiplier to apply to the UVs (Applied first)", 1.0)
-    scaleY = BrawlAPI.UserFloatInput("Y-Scale", "Y Scale multiplier to apply to the UVs (Applied first)", 1.0)
-    transX = BrawlAPI.UserFloatInput("X-Translation", "X Translation offset to apply to the UVs (Applied second)", 0.0)
-    transY = BrawlAPI.UserFloatInput("Y-Translation", "Y Translation offset to apply to the UVs (Applied second)", 0.0)
+    # Gather the required inputs from the user
+    scaleX = BrawlAPI.UserFloatInput("X Scale multiplier to apply to the UVs (Applied first)", "X-Scale", 1.0)
+    scaleY = BrawlAPI.UserFloatInput("Y Scale multiplier to apply to the UVs (Applied first)", "Y-Scale", 1.0)
+    transX = BrawlAPI.UserFloatInput("X Translation offset to apply to the UVs (Applied second)", "X-Translation", 0.0)
+    transY = BrawlAPI.UserFloatInput("Y Translation offset to apply to the UVs (Applied second)", "Y-Translation", 0.0)
     shiftUV(scaleX, scaleY, transX, transY)
 
 def shiftUV(scaleX, scaleY, transX, transY):
     i = 0
+    # Apply the modifiers to each UV point
     for vec2 in BrawlAPI.SelectedNode.Points:
         vec2.X = vec2.X * scaleX
         vec2.X = vec2.X + transX
         vec2.Y = vec2.Y * scaleY
         vec2.Y = vec2.Y + transY
+        # Due to some quirk, necessary to set this manually to ensure saving works
         BrawlAPI.SelectedNode.Points[i] = vec2
         i += 1
+    # Due to some quirk, necessary to set this manually to ensure saving works
     BrawlAPI.SelectedNode.Points = BrawlAPI.SelectedNode.Points
+    # Flag node as needing saving
     BrawlAPI.SelectedNode.SignalPropertyChange()
 
 # Create an instance of our wrapper class and add it to the API wrapper cache
