@@ -20,6 +20,9 @@ class RFNTNode(ARCEntryNode, PluginResourceParser):
     # Called by super class to check if this loader matches the data
     def TryParse(self, stream):
         # Get the 4-byte tag at the beginning of the node. Many nodetypes in Brawl use this type of identifier
+        if stream.Length < 4:
+            return None
+
         src = file(stream)
         src.seek(0,0)
         tag = ""
