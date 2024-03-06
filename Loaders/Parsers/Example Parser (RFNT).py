@@ -1,5 +1,5 @@
 __author__ = "soopercool101 and Sammi Husky"
-__version__ = "2.0.0"
+__version__ = "3.0.0"
 
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
@@ -23,10 +23,10 @@ class RFNTNode(ARCEntryNode, PluginResourceParser):
         if stream.Length < 4:
             return None
 
-        src = file(stream)
-        src.seek(0,0)
+        src = open(stream)
+        src.seek(0)
         tag = ""
-        tag = tag.join(struct.unpack('>4s', src.read(4)))
+        tag = src.read(4).decode(encoding='utf-8', errors='ignore')
 
         # If the tag matches, return an instance of our class
         if tag == "RFNT": #RFNT
